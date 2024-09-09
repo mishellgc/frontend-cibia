@@ -1,29 +1,27 @@
 import React, { useState } from "react";
+import { fetchReply } from "./api/cibia";
 import ChatHeader from "./components/ChatHeader";
 import ChatBody from "./components/ChatBody";
 import ChatFooter from "./components/ChatFooter";
 import './styles/App.css';
 
 function App() {
-  const [messages, setMessages] = useState([
-    { sender: "bot", text: "Hola, soy CIBIA. ¿Cómo puedo ayudarte hoy?" },
-  ]);
-
+  const [messages, setMessages] = useState([]);
   const [isOpen, setIsOpen] = useState(true); // Controlar si el chat está abierto o minimizado
   const [isMaximized, setIsMaximized] = useState(false); // Controlar si el chat está maximizado
 
   // Manejar el envío de mensajes
-  const handleSend = (input) => {
-    const newMessages = [...messages, { sender: "user", text: input }];
-    setMessages(newMessages);
-
-    // Simulación de la respuesta del bot
-    setTimeout(() => {
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { sender: "bot", text: `Respuesta a: "${input}"` },
-      ]);
-    }, 1000);
+  const handleSend = async (input) => {
+    const userMessage = { role: 'user', content: input };
+    setMessages([...messages, userMessage]);
+    console.log(messages.length);
+    var iaMessages = await fetchReply(input);
+    for (var i = messages.length + 1; i < iaMessages.length; i++) {
+      console.log(i); // is the index
+      console.log(iaMessages[i].content[0].text.value); // is the item
+      const iaMsg = iaMessages[i].content[0].text.value;
+      setMessages(messages => [...messages, { role: 'assistant', content: iaMsg }]);
+    }
   };
 
   // Minimizar o expandir el chat
@@ -46,7 +44,7 @@ function App() {
       <div className={`chat-container ${isOpen ? "open" : "minimized"} ${isMaximized ? 'full-screen' : ''}`}>
         <ChatHeader toggleOpen={toggleOpen} toggleMaximize={toggleMaximize} closeChat={closeChat} />
         {isOpen && <ChatBody messages={messages} />}
-        {isOpen && <ChatFooter onSend={handleSend} />}
+        {isOpen && <ChatFooter handleSend={handleSend} />}
       </div>
     </div>
   );
