@@ -1,0 +1,38 @@
+/* src/components/ChatFooter.css */
+.chat-footer {
+    padding: 10px; /* Espaciado alrededor */
+    display: flex; /* Flexbox para alinear los elementos */
+    align-items: center; /* Alineación vertical */
+    background-color: #f1f1f1; /* Fondo claro */
+    border-bottom-left-radius: 10px; /* Bordes redondeados en la parte inferior */
+    border-bottom-right-radius: 10px;
+  }
+  
+  .chat-footer input[type="text"] {
+    flex: 1; /* Se expande para ocupar todo el espacio horizontal */
+    padding: 8px; /* Espaciado interno */
+    border: 1px solid #ddd; /* Borde ligero */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-right: 10px; /* Espaciado entre la caja de texto y los botones */
+    font-size: 1rem;
+  }
+  
+  .chat-footer button {
+    background-color: #007bff; /* Color del botón de enviar */
+    color: white; /* Color del texto del botón */
+    border: none; /* Sin bordes */
+    padding: 8px 12px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+  }
+  
+  .chat-footer button:hover {
+    background-color: #0056b3; /* Efecto hover */
+  }
+  
+  .chat-footer .image-upload {
+    font-size: 1.5rem; /* Tamaño del ícono */
+    cursor: pointer;
+    margin-left: 10px; /* Espaciado entre el botón de adjuntar y el de enviar */
+  }
+  

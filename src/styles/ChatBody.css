@@ -1,0 +1,27 @@
+/* src/components/ChatBody.css */
+.chat-body {
+    flex: 1; /* Se expande para ocupar el espacio disponible */
+    padding: 10px; /* Espaciado alrededor */
+    overflow-y: auto; /* Permite desplazamiento si hay muchos mensajes */
+    background-color: #f9f9f9; /* Fondo claro */
+  }
+  
+  .message {
+    margin-bottom: 10px; /* Espaciado entre mensajes */
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%; /* Limita el ancho máximo de los mensajes */
+  }
+  
+  .message.user {
+    background-color: #007bff; /* Color de fondo del mensaje del usuario */
+    color: white; /* Color de texto del usuario */
+    align-self: flex-end; /* Alinea a la derecha */
+  }
+  
+  .message.ai {
+    background-color: #e6e6e6; /* Color de fondo del mensaje AI */
+    color: #000000; /* Color de texto de AI */
+    align-self: flex-start; /* Alinea a la izquierda */
+  }
+  

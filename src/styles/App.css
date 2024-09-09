@@ -1,0 +1,113 @@
+/* src/App.css */
+
+/* Aseguramos que la app ocupe todo el alto y centramos el contenido */
+.App {
+  font-family: 'Arial', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: #f0f0f0; /* Fondo claro */
+}
+
+.chat-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px; /* Ancho del chat */
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra */
+  display: flex;
+  flex-direction: column;
+  transition: height 0.3s ease; /* Transición suave al minimizar */
+}
+
+.chat-container.open {
+  height: 500px; /* Altura completa cuando el chat está expandido */
+}
+
+.chat-container.minimized {
+  height: 40px; /* Altura mínima cuando el chat está cerrado */
+}
+
+.chat-container.full-screen {
+  width: 100vw;
+  height: 100vh;
+  max-height: none;
+}
+
+/* Encabezado del chat */
+.chat-header {
+  background-color: #072146;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+}
+
+.chat-body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto; /* Permitir scroll cuando hay muchos mensajes */
+  background-color: #fff; /* Fondo blanco para el cuerpo */
+}
+
+.chat-footer {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background-color: #f8f8f8;
+}
+
+.chat-footer input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  margin-right: 10px;
+  outline: none;
+}
+
+.chat-footer button {
+  background-color: #1973B8;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.chat-footer button:hover {
+  background-color: #0056b3;
+}
+
+.message {
+  margin-bottom: 10px;
+  max-width: 80%;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.message.user {
+  background-color: #007bff;
+  color: white;
+  align-self: flex-end;
+}
+
+.message.bot {
+  background-color: #f1f1f1;
+  color: black;
+  align-self: flex-start;
+}
+
+/* Para ocultar o mostrar el chat cuando se minimiza */
+.chat-container.minimized .chat-body, 
+.chat-container.minimized .chat-footer {
+  display: none;
+}

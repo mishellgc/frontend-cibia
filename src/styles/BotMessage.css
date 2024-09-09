@@ -1,0 +1,16 @@
+.bot-message {
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 0;
+  }
+  
+  .message-content {
+    background-color: #f1f1f1;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    margin: 5px 0;
+    text-align: left;
+  }
+  

@@ -1,0 +1,30 @@
+/* src/components/ChatHeader.css */
+.chat-header {
+    background-color: #007bff; /* Color de fondo del encabezado */
+    color: white; /* Color del texto */
+    padding: 10px; /* Espaciado interior */
+    display: flex; /* Flexbox para alinear el contenido */
+    justify-content: space-between; /* Espacio entre el título y los botones */
+    align-items: center; /* Centrado vertical */
+    border-top-left-radius: 10px; /* Bordes redondeados en la parte superior */
+    border-top-right-radius: 10px;
+  }
+  
+  .chat-header h3 {
+    margin: 0; /* Elimina márgenes del título */
+    font-size: 1rem; /* Tamaño de fuente */
+  }
+  
+  .chat-controls button {
+    background-color: transparent; /* Botones transparentes */
+    border: none; /* Sin bordes */
+    color: white; /* Color del ícono */
+    font-size: 1.2rem; /* Tamaño de los botones */
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .chat-controls button:hover {
+    color: #e0e0e0; /* Efecto hover */
+  }
+  
