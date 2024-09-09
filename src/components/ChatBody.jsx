@@ -7,10 +7,10 @@ const ChatBody = ({ messages }) => {
   return (
     <div className="chat-body">
       {messages.map((message, index) => {
-        return message.sender === 'user' ? (
-          <UserMessage key={index} text={message.text} />
+        return message.role === 'user' ? (
+          <UserMessage key={index} text={message.content} />
         ) : (
-          <BotMessage key={index} text={message.text} />
+          <BotMessage key={index} text={message.content} />
         );
       })}
     </div>
