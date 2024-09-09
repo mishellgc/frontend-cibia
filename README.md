@@ -35,6 +35,8 @@ Una vez dentro del directorio del proyecto, instala las dependencias necesarias 
 
 ```bash
 npm install
+npm install @mui/material @emotion/react @emotion/styled @mui/icons-material
+npm install react react-dom
 ```
 ### Ejecutar la aplicación en modo de desarrollo
 Para iniciar el servidor de desarrollo, ejecuta:
