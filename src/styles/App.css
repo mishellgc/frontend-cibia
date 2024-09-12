@@ -141,12 +141,22 @@
   border-radius: 50%; /* If you want the image to be circular */
 }
 
-.rcw-conversation-container .rcw-header {
-  background-color: #072146 !important;
-  padding: 0px 0 25px !important;
-  height: 50px !important;
+.rcw-conversation-container {
+  max-width: none;
+  .rcw-header {
+    background-color: #072146 !important;
+    padding: 0px 0 25px !important;
+    height: 50px !important;
+  }
 }
 
 .rcw-client .rcw-message-text {
   background-color: #0078FF !important;
+}
+
+.rcw-full-screen{
+  margin: 0 !important;
+  .rcw-close-button {
+    display: none;
+  }
 }
