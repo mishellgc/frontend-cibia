@@ -12,6 +12,16 @@ import CloseIcon from '@mui/icons-material/Close'; // Icono de cerrar
 import axios from 'axios';
 
 function App() {
+  const [greetings, setGreetings] = useState('');
+  useEffect(async () => {
+    toggleMsgLoader();
+    setIsTyping(true);
+    var message = "Hola soy RAMON LOPEZ TORRES con DNI 64672316 representante de la empresa TRANSPORTES UNIDOS SA con RUC 20100015555. Saludame presentandote"
+    const response = await axios.post('http://127.0.0.1:5000/api/consult', {pregunta: message});
+    setGreetings(response.data.respuesta);
+    toggleMsgLoader();
+    setIsTyping(false);
+  }, []);
 
   const [isTyping, setIsTyping] = useState(false);
 
@@ -59,16 +69,17 @@ function App() {
     handleToggle();
   };
 
-  const handleToggle = async (event) => {
+  const handleToggle = () => {
     const btnLogo = document.querySelector("#root > div > div > button")
+    console.log(btnLogo);
     if (btnLogo){
       if (btnLogo.style.visibility === "hidden") {
         dropMessages();
+        btnLogo.click();
         btnLogo.style.visibility = "visible"; // Show element
       } else {
-        var message = "Hola soy RAMON LOPEZ TORRES con DNI 64672316 representante de la empresa TRANSPORTES UNIDOS SA con RUC 20100015555. Saludame presentandote"
-        const response = await axios.post('http://127.0.0.1:5000/api/consult', {pregunta: message});
-        addResponseMessage(response.data.respuesta);
+        console.log("btnLogo");
+        addResponseMessage(greetings);
         btnLogo.style.visibility = "hidden";  // Hide element
       }
     }
@@ -84,10 +95,9 @@ function App() {
           launcherOpenImg={logo}
           fullScreenMode={isMaximized}
           launcherCloseImg="https://img.icons8.com/?size=100&id=3QmmTwcR4c2b&format=png&color=FFFFFF"
-          isShowFileUploader={true}
           emojis={false}
           handleToggle={handleToggle}
-          showCloseButton={false}
+          showCloseButton={true}
       />
     </div>
   );
