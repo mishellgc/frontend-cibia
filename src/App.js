@@ -65,7 +65,6 @@ function App() {
 
   // Cerrar el chat (opcional)
   const closeChat = () => {
-    setIsOpen(false);
     handleToggle();
   };
 
@@ -74,15 +73,16 @@ function App() {
     console.log(isOpen);
     const btnLogo = document.querySelector("#root > div > div > button")
     if (isOpen){
-      setIsOpen(true);
-      dropMessages();
-      btnLogo.click();
-    } else {
       setIsOpen(false);
+      dropMessages();
       if (btnLogo === null){
-        setIsOpen(false);
-        dropMessages();
+        setIsMaximized(false);
+        setTimeout(function(){ btnLogo.click();}, 2000);
+      } else {
+        btnLogo.click();
       }
+    } else {
+      setIsOpen(true);
       console.log("btnLogo");
       addResponseMessage(greetings);
     }
@@ -95,7 +95,7 @@ function App() {
       console.log(e.target.files[i].name);
       message = message + " '" + e.target.files[i].name + "'"
     }
-    message = message + " que se encuentran en la carpeta D:\\web\\cibia\\prueba\\docs\\"
+    message = message + " que se encuentran en la carpeta D:\\web\\cibia\\prueba\\docs\\, sin embargo espera mi otro mensaje."
     console.log(message);
     const response = await axios.post('http://127.0.0.1:5000/api/consult', {pregunta: message})
   }

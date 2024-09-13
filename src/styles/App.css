@@ -20,7 +20,7 @@
   position: fixed;
   bottom: 10px;
   left: 5px;
-  /* opacity: 0; */
+  opacity: 0;
   z-index: 9999;
   height: 40px;
   width: 35px;
@@ -175,4 +175,18 @@
   .rcw-close-button {
     display: none;
   }
+  .rcw-client .rcw-message-text{
+    margin-left: auto;
+  }
+  .rcw-message-text{
+    max-width: none;
+    width: 80%;
+  }
+  .rcw-message{
+    margin: 10px 20px 10px 10px;
+  }
+}
+.rcw-picker-btn img{
+  content:url("https://img.icons8.com/?size=100&id=NjujHWc6iSDE&format=png&color=000000");
+  height: 30px;
 }
