@@ -69,20 +69,35 @@ function App() {
     handleToggle();
   };
 
+  
   const handleToggle = () => {
+    console.log(isOpen);
     const btnLogo = document.querySelector("#root > div > div > button")
-    console.log(btnLogo);
-    if (btnLogo){
-      if (btnLogo.style.visibility === "hidden") {
+    if (isOpen){
+      setIsOpen(true);
+      dropMessages();
+      btnLogo.click();
+    } else {
+      setIsOpen(false);
+      if (btnLogo === null){
+        setIsOpen(false);
         dropMessages();
-        btnLogo.click();
-        btnLogo.style.visibility = "visible"; // Show element
-      } else {
-        console.log("btnLogo");
-        addResponseMessage(greetings);
-        btnLogo.style.visibility = "hidden";  // Hide element
       }
+      console.log("btnLogo");
+      addResponseMessage(greetings);
     }
+  }
+
+  const handleChange = async (e) => {
+    var message = "Considera los archivos";
+    const numFiles = e.target.files.length;
+    for (let i = 0; i < numFiles; i++) {
+      console.log(e.target.files[i].name);
+      message = message + " '" + e.target.files[i].name + "'"
+    }
+    message = message + " que se encuentran en la carpeta D:\\web\\cibia\\prueba\\docs\\"
+    console.log(message);
+    const response = await axios.post('http://127.0.0.1:5000/api/consult', {pregunta: message})
   }
 
   return (
@@ -95,10 +110,10 @@ function App() {
           launcherOpenImg={logo}
           fullScreenMode={isMaximized}
           launcherCloseImg="https://img.icons8.com/?size=100&id=3QmmTwcR4c2b&format=png&color=FFFFFF"
-          emojis={false}
           handleToggle={handleToggle}
           showCloseButton={true}
       />
+      <input type="file" multiple class="chat-uploader" onChange={handleChange}/>
     </div>
   );
 }
